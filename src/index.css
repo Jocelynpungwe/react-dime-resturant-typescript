@@ -1,0 +1,90 @@
+:root {
+  --color-beaver: #9e7f66;
+  --color-cod-gray: #111111;
+  --color-mirage: #17192b;
+  --color-ebony-clay: #242b37;
+  --color-shuttle-gray: #5c6779;
+  --color-white: #fff;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --shadow-1: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--color-cod-gray);
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.8125rem;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5; /* 150% */
+  text-align: center;
+}
+
+img {
+  object-fit: cover;
+  width: 100%;
+}
+
+h1 {
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 1.25;
+  letter-spacing: -0.025rem;
+}
+
+h2 {
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.025rem;
+}
+
+p {
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.62;
+}
+
+.main-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.hero-section {
+  background-image: url('./assets/images/homepage/hero-bg-mobile@2x.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 46.75rem;
+}
+
+/* BUTTONS */
+
+button {
+  cursor: pointer;
+}
+
+.primary-button {
+  padding: 1.55rem 3.37rem;
+  border: 1px solid var(--color-white);
+  font-family: inherit;
+  font-size: 1.0625rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 0.94;
+  letter-spacing: 0.156rem;
+  color: var(--color-white);
+  text-transform: capitalize;
+}
