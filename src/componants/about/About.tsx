@@ -27,9 +27,9 @@ const About = () => {
 }
 
 const Wrapper = styled.section`
-  padding: 6rem 0 2rem 0;
+  padding: 6rem 0;
   .container {
-    transform: translateY(-15%);
+    margin-top: -250px;
   }
   .section-a {
     margin-bottom: 5rem;
