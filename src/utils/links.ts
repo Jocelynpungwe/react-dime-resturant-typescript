@@ -53,3 +53,23 @@ export const serviceLink: SectionProps[] = [
     desc: 'Creamy mousse combined with summer fruits and dark chocolate shavings.',
   },
 ]
+
+export type EventLinks = {
+  heading: string
+  desc: string
+}
+
+export const eventLinks: EventLinks[] = [
+  {
+    heading: 'Family Gathering',
+    desc: 'We love catering for entire families. So please bring everyone along for a special meal with your loved ones. We’ll provide a memorable experience for all.',
+  },
+  {
+    heading: 'SPECIAL EVENTS',
+    desc: 'We cater for special events such as birthdays. So please bring everyone along for a special meal with your loved ones. We’ll provide a memorable experience for all.',
+  },
+  {
+    heading: 'SOCIAL EVENTS',
+    desc: 'We cater for every social events such business meetings. So please bring everyone along for a special meal with your loved ones. We’ll provide a memorable experience for all.',
+  },
+]

@@ -5,6 +5,7 @@
   --color-ebony-clay: #242b37;
   --color-shuttle-gray: #5c6779;
   --color-white: #fff;
+  --color-gray: #4C4C4C,
   --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   --shadow-1: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
@@ -84,7 +85,8 @@ button {
   cursor: pointer;
 }
 
-.primary-button {
+.primary-button,
+.secondary-button {
   padding: 1.55rem 3.37rem;
   border: 1px solid var(--color-white);
   font-family: inherit;
@@ -95,4 +97,14 @@ button {
   letter-spacing: 0.156rem;
   color: var(--color-white);
   text-transform: capitalize;
+  background-color: black;
+  text-decoration: none;
+}
+
+.primary-button {
+  background-color: transparent;
+}
+
+.secondary-button {
+  background-color: #111111;
 }
