@@ -1,11 +1,22 @@
 import styled from 'styled-components'
 import { type SectionProps } from '../../utils/links'
 
-const SectionA = ({ imageSrc, heading, desc, alt }: SectionProps) => {
+const SectionA = ({
+  imageSrc,
+  heading,
+  desc,
+  alt,
+  tabletImg,
+}: SectionProps) => {
   return (
     <Wrapper>
       <div>
-        <img src={imageSrc} alt={alt} />
+        <img
+          srcSet={`${imageSrc} 600w,
+          ${tabletImg} 1000w`}
+          alt={alt}
+          src={imageSrc}
+        />
       </div>
       <svg
         xmlns="http://www.w3.org/2000/svg"

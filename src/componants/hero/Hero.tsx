@@ -38,7 +38,9 @@ const Wrapper = styled.section`
   justify-content: center;
   align-items: center;
   color: var(--color-white);
-
+  .logo {
+    margin-top: 2rem;
+  }
   .logo,
   h1 {
     margin-bottom: 0.5rem;
@@ -46,6 +48,11 @@ const Wrapper = styled.section`
 
   p {
     margin-bottom: 3.31rem;
+  }
+  @media screen and (min-width: 26.5625rem) {
+    .logo {
+      margin-top: 8rem;
+    }
   }
 `
 

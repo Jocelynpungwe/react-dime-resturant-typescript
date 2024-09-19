@@ -14,6 +14,7 @@ const About = () => {
             >
               <SectionA
                 imageSrc={links.imageSrc}
+                tabletImg={links.tabletImg}
                 heading={links.heading}
                 desc={links.desc}
                 alt={links.desc}
@@ -29,7 +30,7 @@ const About = () => {
 const Wrapper = styled.section`
   padding: 6rem 0;
   .container {
-    margin-top: -250px;
+    margin-top: -190px;
   }
   .section-a {
     margin-bottom: 5rem;

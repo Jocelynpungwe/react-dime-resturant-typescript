@@ -10,6 +10,7 @@
   --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   --shadow-1: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --table-screen: 600px;
 }
 
 *,
@@ -68,8 +69,15 @@ p {
 }
 
 .main-container {
-  width: 90%;
+  width: 90vw;
   margin: 0 auto;
+}
+
+@media screen and (min-width: 26.5625rem) {
+  .main-container{
+    width: 70vw;
+  }
+  
 }
 
 .hero-section {
@@ -78,6 +86,23 @@ p {
   background-size: cover;
   height: 46.75rem;
 }
+
+@media screen and (min-width: 600px) {
+  .hero-section{
+    background-image: url('./assets/images/homepage/hero-bg-tablet@2x.jpg');
+  }
+  .main-container{
+    width: 90vw;
+  }
+  
+}
+
+@media screen and (min-width: 700px) {
+  .main-container{
+    width: 80vw;
+  }
+}
+
 
 /* BUTTONS */
 
@@ -119,4 +144,12 @@ button {
   background-size: cover;
   background-position: center center;
   height: 20rem;
+}
+
+@media screen and (min-width: 600px) {
+ .reservation-container{
+ 
+  background-image: url('./assets/images/homepage/ready-bg-tablet@2x.jpg');
+  
+}
 }

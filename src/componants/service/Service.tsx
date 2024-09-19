@@ -27,6 +27,7 @@ const Service = () => {
               <ServiceInfo
                 alt={links.alt}
                 imageSrc={links.imageSrc}
+                tabletImg={links.tabletImg}
                 heading={links.heading}
                 desc={links.desc}
                 key={links.id}
