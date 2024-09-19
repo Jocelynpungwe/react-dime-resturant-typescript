@@ -106,5 +106,17 @@ button {
 }
 
 .secondary-button {
-  background-color: #111111;
+  background-color: var(--color-cod-gray);
+}
+
+.reservation-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('./assets/images/homepage/ready-bg-mobile@2x.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 20rem;
 }
