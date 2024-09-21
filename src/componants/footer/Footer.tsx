@@ -39,19 +39,19 @@ const Wrapper = styled.article`
   color: var(--color-white);
   height: 25rem;
   padding: 5rem 0;
-
+  .logo {
+    margin-left: 2.5rem;
+  }
   .main-container {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     justify-content: center;
     align-items: center;
     gap: 2rem;
   }
 
   .footer-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    display: grid;
+    grid-gap: 2rem;
   }
 
   p {
@@ -63,11 +63,13 @@ const Wrapper = styled.article`
   @media screen and (min-width: 600px) {
     height: 20rem;
     .main-container {
-      flex-direction: row;
-      gap: 8rem;
+      grid-template-columns: 200px 1fr;
     }
-    .logo {
-      margin-bottom: auto;
+  }
+
+  @media screen and (min-width: 1000px) {
+    .footer-container {
+      grid-template-columns: 1fr 1fr;
     }
   }
 `

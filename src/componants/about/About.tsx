@@ -15,9 +15,11 @@ const About = () => {
               <SectionA
                 imageSrc={links.imageSrc}
                 tabletImg={links.tabletImg}
+                desktopImg={links.desktopImg}
                 heading={links.heading}
                 desc={links.desc}
                 alt={links.desc}
+                id={links.id}
               />
             </div>
           )
