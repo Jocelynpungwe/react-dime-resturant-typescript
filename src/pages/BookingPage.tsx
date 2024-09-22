@@ -1,5 +1,13 @@
+import Booking from '../componants/booking/Booking'
+import HeroBooking from '../componants/booking/HeroBooking'
+
 const BookingPage = () => {
-  return <div>BookingPage</div>
+  return (
+    <>
+      <HeroBooking />
+      <Booking />
+    </>
+  )
 }
 
 export default BookingPage
