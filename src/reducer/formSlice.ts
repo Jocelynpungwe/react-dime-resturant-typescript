@@ -1,29 +1,19 @@
-import { createSlice, current, type PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 
 type InitialState = {
-  name: string
-  email: string
-  month: number
-  date: number
-  year: number
-  hour: number
-  minutes: number
-  amOrPm: 'AM' | 'PM'
-  numberOfUser: number
-  value: string
+  [key: string]: string | number
 }
 
 const initialState: InitialState = {
   name: '',
   email: '',
-  month: 0,
-  date: 0,
+  month: 1,
+  date: 1,
   year: 2024,
-  hour: 0,
+  hour: 1,
   minutes: 0,
-  amOrPm: 'AM',
+  amOrPm: 'AM' as 'AM' | 'PM',
   numberOfUser: 1,
-  value: '',
 }
 
 const formSlice = createSlice({
@@ -31,11 +21,26 @@ const formSlice = createSlice({
   initialState,
   reducers: {
     changeNameAndEmail: (state, { payload }: PayloadAction<InitialState>) => {
-      console.log('the state is', current(state))
-      console.log(payload)
+      ;(state as { [key: string]: string | number })[payload.name] =
+        payload.value
+    },
+    changeDate: (state, { payload }: PayloadAction<InitialState>) => {
+      ;(state as { [key: string]: string | number })[payload.name] =
+        payload.value
+    },
+    increase: (state) => {
+      if (Number(state.numberOfUser) >= 1) {
+        state.numberOfUser = Number(state.numberOfUser) + 1
+      }
+    },
+    decrease: (state) => {
+      if (Number(state.numberOfUser) > 1) {
+        state.numberOfUser = Number(state.numberOfUser) - 1
+      }
     },
   },
 })
 
-export const { changeNameAndEmail } = formSlice.actions
+export const { changeNameAndEmail, changeDate, increase, decrease } =
+  formSlice.actions
 export default formSlice.reducer

@@ -1,4 +1,3 @@
-import { ChangeEvent } from 'react'
 import styled from 'styled-components'
 
 type InputProps = {
@@ -7,7 +6,9 @@ type InputProps = {
   type: string
   placeholder: string
   value: string | number
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  min?: string
+  max?: string
+  handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const InputText = ({
@@ -16,8 +17,47 @@ const InputText = ({
   label,
   value,
   placeholder,
+  min,
+  max,
   handleChange,
 }: InputProps) => {
+  if (name === 'am') {
+    return (
+      <Wrapper>
+        <input
+          type={type}
+          name={name}
+          aria-label={label}
+          value={value}
+          onChange={handleChange}
+          className="form-input"
+          required
+          placeholder={placeholder}
+          min={min}
+          max={max}
+        />
+      </Wrapper>
+    )
+  }
+
+  if (type === 'number') {
+    return (
+      <Wrapper>
+        <input
+          type={type}
+          name={name}
+          aria-label={label}
+          value={value}
+          onChange={handleChange}
+          className="form-input"
+          required
+          placeholder={placeholder}
+          min={min}
+          max={max}
+        />
+      </Wrapper>
+    )
+  }
   return (
     <Wrapper>
       <input

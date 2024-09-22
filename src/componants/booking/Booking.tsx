@@ -1,9 +1,15 @@
 import styled from 'styled-components'
 import Form from './Form'
 import InputText from './InputText'
-import { changeNameAndEmail } from '../../reducer/formSlice'
+import {
+  changeNameAndEmail,
+  changeDate,
+  increase,
+  decrease,
+} from '../../reducer/formSlice'
 import { useAppDispatch, useAppSelector } from '../../hooks'
-import React, { useState } from 'react'
+
+import SelectInput from './SelectInput'
 
 type InitialState = {
   name: string
@@ -17,41 +23,51 @@ type InitialState = {
   numberOfUser: number
 }
 
-const initialState: InitialState = {
-  name: '',
-  email: '',
-  month: 0,
-  date: 0,
-  year: 2024,
-  hour: 0,
-  minutes: 0,
-  amOrPm: 'AM',
-  numberOfUser: 1,
-}
-
 const Booking = () => {
-  const [newFormValue, setNewFormValue] = useState<InitialState>(initialState)
-
   const dispatch = useAppDispatch()
   const dataValue = useAppSelector((store) => store.form)
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-  }
+    if (dataValue.name === '' || dataValue.email === '') {
+      alert('Please provide name and email')
+      return
+    }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const name = e.target.name
-    const value = e.target.value
-    const type = e.target.type
+    if (
+      Number(dataValue.month) < 1 ||
+      Number(dataValue.month) > 12 ||
+      dataValue.month.toString().startsWith('0')
+    ) {
+      alert('Month has to be between 1 and 12')
+      return
+    }
 
-    setNewFormValue((prevData) => {
-      if (type === 'text') {
-        return { ...prevData, [name]: value }
-      }
+    if (
+      Number(dataValue.date) < 1 ||
+      Number(dataValue.date) > 31 ||
+      dataValue.date.toString().startsWith('0')
+    ) {
+      alert('Month has to be between 1 and 31')
+      return
+    }
 
-      return { ...prevData }
-    })
-    dispatch(changeNameAndEmail(dataValue))
-    console.log(newFormValue)
+    if (
+      Number(dataValue.hours) < 0 ||
+      Number(dataValue.hours) > 12 ||
+      dataValue.hours.toString().startsWith('0')
+    ) {
+      alert('Month has to be between 1 and 12')
+      return
+    }
+
+    if (Number(dataValue.minutes) < 0 || Number(dataValue.minutes) > 60) {
+      alert('Month has to be between 0 and 60')
+      return
+    }
+
+    alert(
+      `${dataValue.name} ${dataValue.email} date: ${dataValue.date}/${dataValue.month}/${dataValue.year}  time: ${dataValue.hour} : ${dataValue.minutes}${dataValue.amOrPm} Guests: ${dataValue.numberOfUser}`
+    )
   }
 
   return (
@@ -82,7 +98,6 @@ const Booking = () => {
           handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             dispatch(
               changeNameAndEmail({
-                ...dataValue,
                 name: e.target.name,
                 value: e.target.value,
               })
@@ -94,9 +109,16 @@ const Booking = () => {
           name="email"
           value={dataValue.email}
           type="text"
-          label="name"
+          label="email"
           placeholder="Email"
-          handleChange={handleChange}
+          handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            dispatch(
+              changeNameAndEmail({
+                name: e.target.name,
+                value: e.target.value,
+              })
+            )
+          }
         />
         <section>
           <label className="label">Pick a date</label>
@@ -107,15 +129,27 @@ const Booking = () => {
               type="number"
               label="month"
               placeholder="MM"
-              handleChange={handleChange}
+              max="12"
+              min="1"
+              handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                dispatch(
+                  changeDate({ name: e.target.name, value: e.target.value })
+                )
+              }
             />
             <InputText
               name="date"
               value={dataValue.date}
               type="number"
               label="date"
+              min="1"
+              max="31"
               placeholder="DD"
-              handleChange={handleChange}
+              handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                dispatch(
+                  changeDate({ name: e.target.name, value: e.target.value })
+                )
+              }
             />
             <InputText
               name="year"
@@ -123,7 +157,9 @@ const Booking = () => {
               type="number"
               label="year"
               placeholder="YYY"
-              handleChange={handleChange}
+              handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                dispatch(changeDate({ name: e.target.name, value: 2024 }))
+              }
             />
           </div>
         </section>
@@ -136,7 +172,13 @@ const Booking = () => {
               type="number"
               label="hour"
               placeholder="09"
-              handleChange={handleChange}
+              max="12"
+              min="1"
+              handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                dispatch(
+                  changeDate({ name: e.target.name, value: e.target.value })
+                )
+              }
             />{' '}
             <InputText
               name="minutes"
@@ -144,27 +186,47 @@ const Booking = () => {
               type="number"
               label="minutes"
               placeholder="00"
-              handleChange={handleChange}
+              max="60"
+              min="0"
+              handleChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                dispatch(
+                  changeDate({ name: e.target.name, value: e.target.value })
+                )
+              }
             />
-            <InputText
+            <SelectInput
               name="am"
-              value={dataValue.amOrPm}
-              type="text"
               label="am"
-              placeholder="AM"
-              handleChange={handleChange}
+              handleChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                dispatch(
+                  changeNameAndEmail({
+                    name: e.target.name,
+                    value: e.target.value,
+                  })
+                )
+              }
             />
           </div>
         </section>
         <section className="amount-section">
-          <svg xmlns="http://www.w3.org/2000/svg" width="7" height="3">
+          <svg
+            onClick={() => dispatch(decrease())}
+            xmlns="http://www.w3.org/2000/svg"
+            width="7"
+            height="3"
+          >
             <path fill="#9E7F66" d="M6.425 2.977V.601H.629v2.376z" />
           </svg>
           <div>
             {dataValue.numberOfUser}{' '}
-            {dataValue.numberOfUser > 1 ? 'people' : 'person'}
+            {Number(dataValue.numberOfUser) > 1 ? 'people' : 'person'}
           </div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="11">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="10"
+            height="11"
+            onClick={() => dispatch(increase())}
+          >
             <path
               fill="#9E7F66"
               d="M6.227 10.156V6.727h3.429V4.342H6.227V.913H3.842v3.429H.413v2.385h3.429v3.429z"

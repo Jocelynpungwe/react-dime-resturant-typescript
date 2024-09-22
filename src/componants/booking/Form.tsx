@@ -21,7 +21,7 @@ const Wrapper = styled.section`
     max-width: 33.75rem;
     width: 80vw;
     margin: 0 auto;
-    transform: translateY(-20%);
+    transform: translateY(-30%);
   }
 
   @media screen and (min-width: 1000px) {
